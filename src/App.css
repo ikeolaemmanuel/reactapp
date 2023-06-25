@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 30px;
 }
 
 .App-logo {
@@ -35,4 +36,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Card {
+text-align: center;
+background: black;
+    color: white;
+}
+
+.Card:hover {
+  background: gray;
+    color: white;
+}
+
+.container {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
