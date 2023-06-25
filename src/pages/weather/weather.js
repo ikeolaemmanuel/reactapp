@@ -81,7 +81,7 @@ const Weather = () => {
                   <Card.Body>
                     <Card.Text>
                       <div>
-                        <img src={data.current.condition.icon} />
+                        <img src={data.current.condition.icon} alt=""/>
                       </div>
 
                       <div style={{ fontSize: '20px', marginBottom: '10px', fontWeight: '700' }}>{data.location.name}, {data.location.country}</div>

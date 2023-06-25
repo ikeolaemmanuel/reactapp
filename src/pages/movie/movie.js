@@ -32,10 +32,6 @@ const Movie = () => {
     }
   };
 
-  const handleButtonClick2 = () => {
-    console.log(name);
-  };
-
   return (
     <div>
       <h1>Movie</h1>
@@ -60,7 +56,7 @@ const Movie = () => {
           {data && (<Container>
             <Row className="justify-content-center">
               <Col xs={12} md={6}>
-                <img style={{ width: '100%' }} src={data.Poster} alt="Image Description" />
+                <img style={{ width: '100%' }} src={data.Poster} alt="" />
               </Col>
               <Col xs={12} md={6}>
                 <Card style={{ width: '100%' }} className="text-center">
