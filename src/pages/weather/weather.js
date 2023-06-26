@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { fetchWeatherData, fetchImage } from '../../helpers/api';
 
 const Weather = () => {
   const [name, setName] = useState('');
@@ -19,33 +20,22 @@ const Weather = () => {
   const handleButtonClick = async () => {
     getImage();
     console.log(name);
-    try {
-      const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=64496665a00347f79b6142640212112&q=${name}`);
-      const jsonData = await response.json();
-      console.log(jsonData);
-      if (jsonData.error) {
+    const weatherData = await fetchWeatherData(name);
+      if (weatherData.error) {
         alert('Location not found!!')
       } else {
-        setData(jsonData);
+        setData(weatherData);
         setAvail(true);
       }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+    
   };
 
   const getImage = async () => {
     console.log(imageUrl);
-    try {
-      const response = await fetch(`https://api.unsplash.com/search/photos?query=${name}&client_id=optW2j7HJ65Jx2Erkmyq5tqSd1OUR8cBjlCkywe1Fe0`);
-      const jsonData = await response.json();
-      console.log(jsonData);
-      if (jsonData.total > 0) {
-        setImageUrl(jsonData.results[0].urls.full)
+    const imageUrls = await fetchImage(name);
+      if (imageUrls.total > 0) {
+        setImageUrl(imageUrls.results[0].urls.full)
       }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
   };
 
   return (

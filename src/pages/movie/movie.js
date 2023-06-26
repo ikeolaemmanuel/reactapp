@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './movie.css';
+import { fetchMovieData } from '../../helpers/api';
 
 const Movie = () => {
   const [name, setName] = useState('');
@@ -17,19 +18,13 @@ const Movie = () => {
 
   const handleButtonClick = async () => {
     console.log(name);
-    try {
-      const response = await fetch('https://www.omdbapi.com/?t=' + name + '&apikey=c6f5e8f');
-      const jsonData = await response.json();
-      console.log(jsonData);
-      if (jsonData.Response === 'False') {
+    const movieData = await fetchMovieData(name);
+      if (movieData.Response === 'False') {
         alert('Movie not Found!!')
       } else {
-        setData(jsonData);
+        setData(movieData);
         setAvail(true);
       }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
   };
 
   return (
