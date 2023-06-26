@@ -18,7 +18,7 @@ const Movie = () => {
   const handleButtonClick = async () => {
     console.log(name);
     try {
-      const response = await fetch('http://www.omdbapi.com/?t=' + name + '&apikey=c6f5e8f');
+      const response = await fetch('https://www.omdbapi.com/?t=' + name + '&apikey=c6f5e8f');
       const jsonData = await response.json();
       console.log(jsonData);
       if (jsonData.Response === 'False') {
